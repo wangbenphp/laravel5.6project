@@ -266,7 +266,6 @@ class WechatLogic extends BaseLogic
                 break;
             case 5://图文类型
                 $msg = $wechat->transmitNews($postObj, $content);
-                write_log($msg);
                 break;
             case 6://音乐类型
                 $msg = $wechat->transmitMusic($postObj, $content);
