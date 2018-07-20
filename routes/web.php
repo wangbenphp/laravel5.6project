@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**
+ * 微信路由
+ */
+Route::group(['namespace'=>'Wechat','prefix'=>'wechat'], function () {
+    //微信公众号入口
+    Route::any('/index', 'IndexController@index');
+    //微信授权
+    Route::any('/auth', 'IndexController@auth');
+});
