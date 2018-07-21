@@ -57,7 +57,7 @@ class User extends Model
         $res = DB::table('wechat_user')
             ->where('unionid', $unionid)
             ->where('openid', $openid)
-            ->increment('num', 1, ['update' => time()]);
+            ->increment('num', 1, ['update_time' => time()]);
         return $res;
     }
 }
