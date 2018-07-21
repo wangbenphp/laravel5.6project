@@ -179,11 +179,9 @@ class WechatLogic extends BaseLogic
         $wechat_info = $this->get_wechat_info_by_openid($openid, $appid, $config);
         $redis = Redis::getInstance();
         $info = $redis->hgetall('get.db.wechat.info.by.unionid.' . $wechat_info['unionid'] . '.openid:' . $openid);
-        write_log($info, 'is_subscribe_by_openid:info');
         if (empty($info)) {
             $res = model('wechat/user')->get_db_wechat_info_by_unionid_and_openid($wechat_info['unionid'], $openid);
             if ($res) {
-                write_log($res, 'is_subscribe_by_openid:res');
                 $is_subscribe = true;
                 $redis->hmset('get.db.wechat.info.by.unionid.' . $wechat_info['unionid'] . '.openid:' . $openid, $info);
                 $redis->expire('get.db.wechat.info.by.unionid.' . $wechat_info['unionid'] . '.openid:' . $openid, 7200);

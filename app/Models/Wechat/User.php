@@ -16,13 +16,11 @@ class User extends Model
      * 查看数据库unionid&openid的信息
      */
     public function get_db_wechat_info_by_unionid_and_openid($unionid, $openid)
-    {write_log($unionid, 'userModel_unionid');
-    write_log($openid, 'userMode_openid');
+    {
         $info = DB::table('wechat_user')
             ->where('unionid', $unionid)
             ->where('openid', $openid)
             ->first();
-        write_log($info, 'userModle_res');
         return $info ? o2a($info) : null;
     }
 
