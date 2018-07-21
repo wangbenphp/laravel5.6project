@@ -187,6 +187,7 @@ class WechatLogic extends BaseLogic
                 $redis->expire('get.db.wechat.info.by.unionid.' . $wechat_info['unionid'] . '.openid:' . $openid, 7200);
             }
         }
+        write_log(var_export($is_subscribe, true));
         return $is_subscribe;
     }
 
