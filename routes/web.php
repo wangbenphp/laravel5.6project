@@ -23,4 +23,8 @@ Route::group(['namespace'=>'Wechat','prefix'=>'wechat'], function () {
     Route::any('/index', 'IndexController@index');
     //微信授权
     Route::any('/auth', 'IndexController@auth');
+    //分享路由
+    Route::group(['prefix' => 'share'], function () {
+        Route::get('/index', 'ShareController@index');
+    });
 });

@@ -96,6 +96,16 @@ class WechatLogic extends BaseLogic
     }
 
     /**
+     * 微信公众号分享
+     */
+    public function share($appid = '', $config = [], $url = '')
+    {
+        $appid = $appid ?: env('WECHAT_APP_ID');
+        $res = WechatApi::getInstance()->getSignPackage($this->getAccessToken($appid, $config), $appid, $url);
+        return $res;
+    }
+
+    /**
      * 文本处理
      * 关键词回复
      */
